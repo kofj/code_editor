@@ -290,6 +290,8 @@ class _CodeEditorState extends State<CodeEditor> {
 
   /// Creates the text field.
   SingleChildScrollView buildEditableText() {
+    String value = widget.model.getCodeWithIndex(widget.model.position);
+    editingController.text = value;
     return SingleChildScrollView(
       child: Container(
         padding: EdgeInsets.only(

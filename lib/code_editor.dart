@@ -290,8 +290,6 @@ class _CodeEditorState extends State<CodeEditor> {
 
   /// Creates the text field.
   SingleChildScrollView buildEditableText() {
-    String value = widget.model.getCodeWithIndex(widget.model.position);
-    editingController.text = value;
     return SingleChildScrollView(
       child: Container(
         padding: EdgeInsets.only(
@@ -636,6 +634,10 @@ class _CodeEditorState extends State<CodeEditor> {
                   ),
                 ),
                 editButton(opt.editButtonName, () {
+                  final index = widget.model.position;
+                  final value = widget.model.getCodeWithIndex(index);
+                  editingController.text = value;
+
                   setState(() {
                     widget.model.toggleEditing();
                   });
